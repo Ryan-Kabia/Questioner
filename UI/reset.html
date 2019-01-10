@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sign in</title>
+    <title>Reset Password</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
     <script src="./jscript/main.js"></script>
 </head>
+
 <body>
     <header>
         <div class="container">
-            <div id ="logo">
+            <div id="logo">
                 <img src="./img/logo.png">
             </div>
             <nav>
@@ -26,18 +28,13 @@
 
     <section id="form">
         <div class="container">
-            <form>
-                <label for="uname"><b>Username</b></label>
-                <input type="text" name="uname" placeholder="username">
-                <label for="pswd"><b>Password</b></label>
-                <input type="password" name="pswd" placeholder="password">
-                <button type="submit">Sign in</button>
+            <form action="newpassword.html">
+                <label for="remail"><b>Your Email</b></label>
+                <input type="email" name="remail" placeholder="email">
+                <button type="submit">Reset</button>
                 <div class="f_links">
-                    <div id="not_registered">
-                    <a href="signup.html">Not registered?Sign up</a>
-                    </div>
-                    <div id="forgot_pswd">
-                    <a href="reset.html">Forgot password?</a>
+                    <div id="back to login">
+                        <a href="login.html">back to login</a>
                     </div>
                 </div>
             </form>
@@ -46,9 +43,10 @@
 
     <footer>
         <div class="container">
-        <p>Questioner Copyright &copy; 2019</p>
+            <p>Questioner Copyright &copy; 2019</p>
         </div>
     </footer>
-    
+
 </body>
+
 </html>

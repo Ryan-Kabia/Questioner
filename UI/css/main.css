@@ -3,7 +3,6 @@ body{
     padding:0;
     margin: 0;
     background-color: #F1F0E2;
-    min-height: 100%;
 }
 
 .container{
@@ -32,6 +31,17 @@ footer{
     width: 100%;
     position: fixed;
     bottom: 0;
+    padding-top:10px;
+    margin-top:10px;
+    border-top:2px solid#D9BB74;
+}
+#footer{
+    clear: both;
+    background-color: #054549;
+    text-align:center;
+    color:#D9BB74;
+    width: 100%;
+    height: 20px;
     padding-top:10px;
     margin-top:10px;
     border-top:2px solid#D9BB74;
@@ -243,10 +253,16 @@ header nav {
     background-color: #D9BB74;
     color: #054549;
     min-height: 550px;
-    padding: 10px;
+    margin-top: -10px; 
+}
+.deatails h4{
+   background-color: #054549;
+   color: #D9BB74;
+   padding:12px;
 }
 .deatails p{
     margin-top: 10px;
+    padding: 10px;
 }
 #post_questions{
     width:40%;
@@ -301,10 +317,17 @@ header nav {
     background-color:#054549;
     color:#D9BB74;
     font-weight: bolder;
-    padding: 3px 4px;
-    margin: 4px 4px 0 0;
+    padding: 4px 4px;
+    margin: 2px 4px 0 0;
     border: none;
     cursor: pointer;
+}
+.posted input[type=image]{
+   height: 25px;
+   margin-bottom: -10px;
+}
+.posted input[type=image]:focus,input[type=image]:visited{
+   background-color: #054549;
 }
 #comment-box textarea{
     clear: both;
@@ -326,6 +349,7 @@ header nav {
     cursor: pointer;
     float: right;
 }
+
 #comment-box2 textarea{
     clear: both;
     margin-top: 10px;
@@ -354,5 +378,9 @@ header nav {
     margin-top: 3px;
     margin-bottom: 3px;
     width: 90%;
+}
+.up{
+    background: url(../img/up.png) no-repeat;
+    height: 20px;
 }
 

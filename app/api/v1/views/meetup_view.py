@@ -1,15 +1,24 @@
-#from app import app
-from flask import Flask, jsonify, request, redirect
-from v1.models.models import Meetup
+from flask import Flask, jsonify, request, Blueprint
+from app.api.v1.models.models import Meetup
 
-app=Flask(__name__)
+#app=Flask(__name__)
+mod1 = Blueprint('api', __name__)
 
-
-@app.route('/meetups/upcoming/')
+@mod1.route('/meetups/upcoming/')
 def all_meetups():
     return jsonify({"status": 200, "data": Meetup}), 200
 
-@app.route('/meetups',methods = ["POST"])
+
+@mod1.route('/meetups/<meetup_id>')
+def specific_meetups(meetup_id):
+    for entry in Meetup:
+        if entry["id"] == int(meetup_id):
+            return jsonify({"status": 200, "data": entry}), 200
+
+    return jsonify ({"status":404,"data":"entry cannot be found"}),404
+
+
+@mod1.route('/meetups',methods = ["POST"])
 def create_meetup():
     data = request.get_json()
 

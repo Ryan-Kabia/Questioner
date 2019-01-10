@@ -59,6 +59,7 @@ def create_question():
     createdBy = data["createdBy"]
     meetup = data["meetup"]
     title = data["title"]
+    body = data["body"]
     votes = randint(0,50)
 
     new_question = {
@@ -67,6 +68,7 @@ def create_question():
         "createdBy": createdBy,
         "meetup": meetup,
         "title": title,
+        "body":body,
         "votes": votes,
     }
 
@@ -75,8 +77,8 @@ def create_question():
     return jsonify({"status": 201, "data": [new_question]}), 201
 
 
-@mod1.route('/questions/<meetup_id>/rsvp', methods=["PATCH"])
-def upvote(meetup_id):
+@mod1.route('/meetups/<meetup_id>/rsvp', methods=["POST"])
+def rsvp(meetup_id):
 
     data = request.get_json()
 
@@ -109,5 +111,36 @@ def upvote(meetup_id):
     }
     return jsonify({"status": 201, "data": [rtrn_obj]}), 201
 
+@mod1.route('/questions/<question_id>/upvote', methods=["PATCH"])
+def upvote(question_id):
+    for entry in Question:
+        if entry["id"] == int(question_id):
+            meetup = entry["meetup"]
+            title = entry["title"]
+            body = entry["body"]
+            votes = entry["votes"]+1
+            break
     
+    rtrn_obj = {"meetup":meetup,
+                "title":title,
+                "body":body,
+                "votes":votes
+                }
+    return jsonify({"status": 201, "data": [rtrn_obj]}), 201
 
+@mod1.route('/questions/<question_id>/downvote', methods=["PATCH"])
+def downvote(question_id):
+    for entry in Question:
+        if entry["id"] == int(question_id):
+            meetup = entry["meetup"]
+            title = entry["title"]
+            body = entry["body"]
+            votes = entry["votes"]-1
+            break
+    
+    rtrn_obj = {"meetup":meetup,
+                "title":title,
+                "body":body,
+                "votes":votes
+                }
+    return jsonify({"status": 201, "data": [rtrn_obj]}), 201

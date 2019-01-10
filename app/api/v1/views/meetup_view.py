@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, Blueprint
-from app.api.v1.models.models import Meetup,Question
-from random import *
+from app.api.v1.models.models import Meetup,Question,Rsvp
+from random import randint
 
 #app=Flask(__name__)
 mod1 = Blueprint('api', __name__)
@@ -73,3 +73,41 @@ def create_question():
     Question.append(new_question)
 
     return jsonify({"status": 201, "data": [new_question]}), 201
+
+
+@mod1.route('/questions/<meetup_id>/rsvp', methods=["PATCH"])
+def upvote(meetup_id):
+
+    data = request.get_json()
+
+    last_id = Rsvp[-1]["id"]
+    inc_id = last_id+1
+
+    id = inc_id
+    meetup = int(meetup_id)
+    user = data["user"]
+    responce = data["responce"]
+
+    new_rsvp = {
+        "id":id,
+        "meetup":meetup,
+        "user":user,
+        "responce":responce
+    }
+
+    Rsvp.append(new_rsvp)
+
+    for entry in Meetup:
+        if entry["id"] == int(meetup_id):
+            topic= entry["topic"]
+            break
+    
+    rtrn_obj ={
+        "meetup":meetup,
+        "topic": topic,
+        "responce":responce
+    }
+    return jsonify({"status": 201, "data": [rtrn_obj]}), 201
+
+    
+

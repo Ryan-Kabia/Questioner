@@ -20,3 +20,12 @@ Meetup = [{
         "topic":"lit fam!",
         "Tags":["lit,fam"],
         }]
+
+Question = [{
+    "id": 1,
+    "createdOn": "8/1/2019",
+    "createdBy": "Adam Cole",
+    "meetup": 1,
+    "title": "but is it undisputed?",
+    "votes": 23,
+}]

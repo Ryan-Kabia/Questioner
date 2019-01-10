@@ -1,4 +1,4 @@
-astroid==2.1.0
+gastroid==2.1.0
 atomicwrites==1.2.1
 attrs==18.2.0
 Click==7.0
@@ -12,7 +12,7 @@ mccabe==0.6.1
 more-itertools==5.0.0
 pathlib2==2.3.3
 pep8==1.7.1
-pkg-resources==0.0.0
+#pkg-resources==0.0.0
 pluggy==0.8.0
 py==1.7.0
 pylint==2.2.2

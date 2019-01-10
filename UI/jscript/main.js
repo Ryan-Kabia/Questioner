@@ -14,6 +14,7 @@ window.onload = function(){
     document.getElementById("qpcomment-box").style.display = "none";
     document.getElementById("qpcomment-box2").style.display = "none";
     document.getElementById("qpcomment-box3").style.display = "none";
+    document.getElementById("newpswd").style.display = "none";
     
     
 }
@@ -214,6 +215,17 @@ function comments() {
 function pmeetup() {
 
     var x = document.getElementById("meets");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    }
+    else {
+        x.style.display = "none";
+    }
+
+}
+function revealnew() {
+
+    var x = document.getElementById("newpswd");
     if (x.style.display === "none") {
         x.style.display = "block";
     }

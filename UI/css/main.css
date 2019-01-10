@@ -79,6 +79,10 @@ header nav {
     float: right;
     margin-top:10px;
 }
+header nav img{
+    height:25px;
+    margin-top: -4px;
+}
 
 #form{
     min-height:400px;
@@ -100,6 +104,27 @@ header nav {
     margin-top:10px;
     float: left;
 }
+#Upcoming_Meetups{
+    min-height:400px;
+    width: 35%;
+    margin-left:1px;
+    margin-top:10px;
+    float: left;
+}
+#Posted_Questions{
+    min-height:400px;
+    width: 35%;
+    margin-left:1px;
+    margin-top:10px;
+    float: left;
+}
+#Posted_Comments{
+    min-height:400px;
+    width: 27%;
+    margin-left:1px;
+    margin-top:10px;
+    float: right;
+}
 #Posted_Q{
     min-height:400px;
     max-width: 30%;
@@ -107,7 +132,7 @@ header nav {
     margin-top:10px;
     float: right;
 }
-#pmeet{
+#pmeet,#umeet,#qpost{
     width: 99%;
     min-height:300px;
     margin-top: 20px;
@@ -119,15 +144,81 @@ header nav {
     padding:5px;
 }
 #pmeet h3{
-    background: #D9BB74;
     color: #054549;
     padding:5px;
     width: 93%;
 }
+#umeet button{
+    background: #F25652;
+    min-width: 93%;
+}
+#pmeet button{
+    background: #D9BB74;
+    min-width: 93%;
+}
+#qpost button{
+    background: #054549;
+    min-width: 93%;
+}
+#cpost button{
+    background: #D9BB74;
+    min-width: 93%;
+}
+#umeet h3,span{
+    color: #054549;
+    padding:10px;
+    margin: 0;
+    display: block;
+    text-align: center;
+}
+#qpost h3,span{
+    color: #D9BB74;
+    padding:10px;
+    margin: 0;
+    display: block;
+    text-align: center;
+}
+#cpost h3,span{
+    color: #054549;
+    padding:10px;
+    margin: 0;
+    display: block;
+    text-align: center;
+}
+#umeet span{
+    color: #054549;
+    font-size: 35px;
+    padding-top: 0;
+}
+#qpost span{
+    color: #D9BB74;
+    font-size: 35px;
+    padding-top: 0;
+}
+#cpost span{
+    font-size: 35px;
+    padding-top: 0;
+}
+#feed{
+    margin-left: 2px;
+}
+#postyq .qcards{
+    margin-left: 6px;
+    width:90%;
+}
+#postyc #comments p{
+    border-left: 2px solid #054549;
+    background-color: #D9BB74;
+    padding: 4px;
+    margin-left: 10px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    width: 85%;
+}
 #pmeet input[type=button]{
     min-width: 25%;
     display: inline;
-    background-color:#D9BB74;
+    background-color:#F25652;
     color:#054549;
     font-weight: bold;
     padding: 8px 8px;
@@ -223,6 +314,25 @@ header nav {
     padding:1px;
 }
 .adescription{
+    color: #054549;
+}
+.mhead{
+    background-color: #054549;
+    color: #D9BB74;
+}
+.mhead h4,p{
+    margin: 0;
+    padding:1px;
+}
+.venue_time{
+    background-color: #D9BB74;
+    color: #054549;
+}
+.venue_time h4,p{
+    margin: 0;
+    padding:1px;
+}
+.description{
     color: #054549;
 }
 #form-admin{

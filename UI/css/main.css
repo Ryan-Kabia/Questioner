@@ -32,8 +32,8 @@ footer{
     width: 100%;
     position: fixed;
     bottom: 0;
-    padding-top:1px;
-    margin-top:20px;
+    padding-top:10px;
+    margin-top:10px;
     border-top:2px solid#D9BB74;
 }
 
@@ -41,15 +41,12 @@ footer{
 header a {
     color: #D9BB74;
     text-decoration: none;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-size: 15px;
 }
 
 header a:hover {
     color: #F25652;
-    font-weight: bold;
-    font-size: 16px;
-    
 }
 
 header li{
@@ -65,7 +62,6 @@ header #logo{
 header #logo img{
     margin:0;
     height:50px;
-    width: 100px;
 
 }
 
@@ -134,3 +130,178 @@ header nav {
     margin-top:30px; 
     float: right;
 }
+
+#showcase{
+    width: 90%;
+    min-height:175px;
+    margin: auto;
+    background:url(../img/showcase.jpg)0 -75px;
+}
+#head_btn{
+    background-color: #D9BB74;
+    max-width: 15%;
+    padding: 2px;
+    text-align: center;
+}
+#head_btn h1{
+    margin:10% 0 0 0;
+    padding: 0;
+    font-size: 40px;
+    font-weight: bolder;
+    color: #054549;
+    text-shadow: 2px 2px 6px #D9BB74;
+    
+}
+#head_btn button  {
+    min-width: 10%;
+    display: inline;
+    background-color:#054549;
+    color:#D9BB74;
+    font-weight: bolder;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+   
+}
+#meetup{
+    float: left;
+    width:74%;
+    min-height: 350px;
+}
+#meetup_view a{ 
+    text-decoration: none;
+}
+#meetup_view{
+    width: 99%;
+    min-height:300px;
+    margin-top: 20px;
+    
+    
+}
+.cards{
+    width:30%;
+    border:1px solid #054549;
+    margin-right:20px;
+    margin-top: 15px;
+    float: left;
+
+
+}
+.mhead{
+    background-color: #054549;
+    color: #D9BB74;
+}
+.mhead h4,p{
+    margin: 0;
+    padding:1px;
+}
+.venue_time{
+    background-color: #D9BB74;
+    color: #054549;
+}
+.venue_time h4,p{
+    margin: 0;
+    padding:1px;
+}
+.description{
+    color: #054549;
+}
+#categories{
+    width: 25%;
+    float: right;
+   
+}
+#ctgry{
+    background-color: #D9BB74;
+    min-height:350px;
+    width: 83%;
+    
+}
+
+#ctgry h4{
+    background-color: #054549;
+    color: #D9BB74;
+
+}
+#ctgry a{
+    text-decoration: none;
+    color: #054549;
+    padding-left: 5px;
+}
+#ctgry a:hover{
+    text-decoration: none;
+    color: #F25652;
+}
+#question{
+    width:40%;
+    margin-left:50px;
+    min-height: 550px;
+    float: left;
+}
+.deatails{
+    background-color: #D9BB74;
+    color: #054549;
+    min-height: 550px;
+    padding: 10px;
+}
+.deatails p{
+    margin-top: 10px;
+}
+#post_questions{
+    width:40%;
+    margin:0;
+    min-height: 550px;
+    float: left;
+}
+.post_q form{
+    margin: 10px;
+}
+.post_q textarea{
+    min-width:97%;
+    height: 100px;
+    resize:none;
+    border: 2px solid #054549;
+}
+.post_q button{
+    min-width: 10%;
+    display: inline;
+    background-color:#054549;
+    color:#D9BB74;
+    font-weight: bolder;
+    padding: 10px 15px;
+    margin: 8px 8px 8px 0;
+    border: none;
+    cursor: pointer;
+    float: right;
+}
+.posted{
+    clear: both;
+    margin-left: 20px;
+    background-color: #D9BB74;
+    color: #054549;
+    border-left: 4px solid #054549;
+    width: 80%;
+    font-size: 15px;
+    padding: 3px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+.posted p{
+    float: left;
+}
+.posted form{
+    float: right;
+}
+.posted input[type=button]{
+    min-width: 10%;
+    display: inline;
+    background-color:#054549;
+    color:#D9BB74;
+    font-weight: bolder;
+    padding: 3px 4px;
+    margin: 4px 4px 0 0;
+    border: none;
+    cursor: pointer;
+}
+

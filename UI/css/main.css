@@ -261,6 +261,7 @@ header nav {
     min-width:97%;
     height: 100px;
     resize:none;
+    text-align: left;
     border: 2px solid #054549;
 }
 .post_q button{
@@ -277,10 +278,10 @@ header nav {
 }
 .posted{
     clear: both;
-    margin-left: 20px;
+    margin-left: 50px;
     background-color: #D9BB74;
     color: #054549;
-    border-left: 4px solid #054549;
+    border-left: 3px solid #054549;
     width: 80%;
     font-size: 15px;
     padding: 3px;
@@ -292,6 +293,7 @@ header nav {
 }
 .posted form{
     float: right;
+    padding: 3px;
 }
 .posted input[type=button]{
     min-width: 10%;
@@ -303,5 +305,54 @@ header nav {
     margin: 4px 4px 0 0;
     border: none;
     cursor: pointer;
+}
+#comment-box textarea{
+    clear: both;
+    margin-top: 10px;
+    width:98%;
+    height:50px;
+    border:1px solid #054549;
+    resize: none;
+}
+#comment-box input[type=button]{
+    min-width: 10%;
+    display: inline;
+    background-color:#054549;
+    color:#D9BB74;
+    font-weight: bolder;
+    padding: 4px 4px;
+    margin: 2px 7px 3px 0;
+    border: none;
+    cursor: pointer;
+    float: right;
+}
+#comment-box2 textarea{
+    clear: both;
+    margin-top: 10px;
+    width:98%;
+    height:50px;
+    border:1px solid #054549;
+    resize: none;
+}
+#comment-box2 input[type=button]{
+    min-width: 10%;
+    display: inline;
+    background-color:#054549;
+    color:#D9BB74;
+    font-weight: bolder;
+    padding: 3px 4px;
+    margin: 4px 4px 0 0;
+    border: none;
+    cursor: pointer;
+    float: right;
+}
+#comments p{
+    border-left: 2px solid #054549;
+    background-color: #F1F0E2;
+    padding: 4px;
+    margin-left: 10px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    width: 90%;
 }
 

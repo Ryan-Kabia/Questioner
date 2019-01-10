@@ -43,9 +43,7 @@
         <div class="container">
             <div class="post_q">
                 <form>
-                    <textarea placeholder= "Have a question..." >
-                    
-                    </textarea>
+                    <textarea placeholder= "Have a question..." ></textarea>
                     <button type="submit">Post</button>
                 </form>
             </div>
@@ -55,9 +53,17 @@
                     <form>
                         <input type="button" value="Upvote">
                         <input type="button" value="Downvote">
-                        <input type="button" value="Comment">
+                        <input type="button" onclick="myfunc()" value="Comment">
                     </form>
-                    
+                    <div id="comment-box">
+                        <textarea  placeholder="comment..."></textarea>
+                        <input type="button" value="Post">
+                        <div id="comments">
+                            <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                            <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                            <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="posted">
@@ -66,31 +72,17 @@
                     <form>
                         <input type="button" value="Upvote">
                         <input type="button" value="Downvote">
-                        <input type="button" value="Comment">
+                        <input type="button" onclick="myfunc2()" value="Comment">
                     </form>
-            
-                </div>
-            </div>
-            <div class="posted">
-                <p>That is a very good question, be nice if you could answer it!</p>
-                <div>
-                    <form>
-                        <input type="button" value="Upvote">
-                        <input type="button" value="Downvote">
-                        <input type="button" value="Comment">
-                    </form>
-            
-                </div>
-            </div>
-            <div class="posted">
-                <p>That is a very good question, be nice if you could answer it!</p>
-                <div>
-                    <form>
-                        <input type="button" value="Upvote">
-                        <input type="button" value="Downvote">
-                        <input type="button" value="Comment">
-                    </form>
-            
+                    <div id="comment-box2">
+                        <textarea placeholder="comment..."></textarea>
+                        <input type="button" value="Post">
+                        <div id="comments">
+                            <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                            <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                            <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

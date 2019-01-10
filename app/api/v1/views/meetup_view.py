@@ -4,7 +4,12 @@ from v1.models.models import Meetup
 
 app=Flask(__name__)
 
-@app.route('/meetup',methods = ["POST"])
+
+@app.route('/meetups/upcoming/')
+def all_meetups():
+    return jsonify({"status": 200, "data": Meetup}), 200
+
+@app.route('/meetups',methods = ["POST"])
 def create_meetup():
     data = request.get_json()
 

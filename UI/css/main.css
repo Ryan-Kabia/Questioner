@@ -86,9 +86,21 @@ header nav {
     margin:auto;
     margin-top:50px;
 }
+#form-admin{
+    min-height:400px;
+    max-width: 500px;
+    margin:auto;
+    margin-top:50px;
+}
 
 #form form{
     border: 2px solid #054549;
+    min-height: 250px;
+    padding:15px; 
+}
+#form-admin form{
+    border: 2px solid #D9BB74;
+    background-color: #054549;
     min-height: 250px;
     padding:15px; 
 }
@@ -99,6 +111,13 @@ header nav {
     margin: 8px 0;
     display: inline;
     border: 1px solid #054549;
+}
+#form-admin input[type=text], input[type=password], input[type=email]{
+    min-width:85%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline;
+    border: 1px solid #D9BB74;
 }
 #form button  {
     min-width: 35%;
@@ -112,8 +131,24 @@ header nav {
     cursor: pointer;
    
 }
+#form-admin button  {
+    min-width: 35%;
+    display: inline;
+    background-color:#F25652;
+    color:#054549;
+    font-weight: bolder;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+   
+}
 #form label{
     color:#054549;
+    font-size: 15px;
+}
+#form-admin label{
+    color:#D9BB74;
     font-size: 15px;
 }
 
@@ -125,6 +160,17 @@ header nav {
     color:#054549;
 }
 .f_links a:hover{
+    text-decoration: none;
+    color:#F25652;
+}
+.af_links {
+    font-size: 13px;
+}
+.af_links a{
+    text-decoration: none;
+    color:#D9BB74;
+}
+.af_links a:hover{
     text-decoration: none;
     color:#F25652;
 }

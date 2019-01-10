@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
+    <script src="./jscript/main.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div id="logo">
+                <img src="./img/logo.png">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">home</a></li>
+                    <li><a href="login.html">logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="create">
+        <div class="container">
+            
+            <form>
+                <fieldset>
+                    <legend>New Meetup:</legend>
+                    <input type="text" name="heading" placeholder="Heading">
+                    <input type="text" name="venue" placeholder="Venue">
+                    <input type="text" name="date" placeholder="Date">
+                    <input type="text" name="time" placeholder="Time">
+                    <textarea placeholder="details..."></textarea>
+                    <input type="button" value="Create">
+                </fieldset>
+            </form>
+            
+        </div>
+    </section>
+    <section id="Posted_Meetups">
+        <div class="container">
+            <div id="pmeet">
+                <h3>Posted Meetups</h3>
+                <a href="" onclick="myfucn101()">
+                    <div class="acards">
+                            <div class="amhead">
+                                <h4>Meetup1</h4>
+                                <p>7/1/2019</p>
+                            </div>
+                            <div class="avenue_time">
+                                <h4>Hillton park</h4>
+                                <p>2:30pm</p>
+                            </div>
+                            <div class="adescription">
+                                <p>Meetup to disscuss economic strategy</p>
+                            </div>
+                    </div>
+                </a>
+                <input type="button" value="Delete">
+                <a href="" onclick="myfucn101()">
+                    <div class="acards">
+                        <div class="amhead">
+                            <h4>Meetup1</h4>
+                            <p>7/1/2019</p>
+                        </div>
+                        <div class="avenue_time">
+                            <h4>Hillton park</h4>
+                            <p>2:30pm</p>
+                        </div>
+                        <div class="adescription">
+                            <p>Meetup to disscuss economic strategy</p>
+                        </div>
+                    </div>
+                </a>
+                <input type="button" value="Delete">
+                <a href="" onclick="myfucn101()">
+                    <div class="acards">
+                        <div class="amhead">
+                            <h4>Meetup1</h4>
+                            <p>7/1/2019</p>
+                        </div>
+                        <div class="avenue_time">
+                            <h4>Hillton park</h4>
+                            <p>2:30pm</p>
+                        </div>
+                        <div class="adescription">
+                            <p>Meetup to disscuss economic strategy</p>
+                        </div>
+                    </div>
+                </a>
+                <input type="button" value="Delete">
+                <a href="" onclick="myfucn101()">
+                    <div class="acards">
+                        <div class="amhead">
+                            <h4>Meetup1</h4>
+                            <p>7/1/2019</p>
+                        </div>
+                        <div class="avenue_time">
+                            <h4>Hillton park</h4>
+                            <p>2:30pm</p>
+                        </div>
+                        <div class="adescription">
+                            <p>Meetup to disscuss economic strategy</p>
+                        </div>
+                    </div>
+                </a>
+                <input type="button" value="Delete">
+            </div>
+        </div>
+    </section>
+    <section id="Posted_Q">
+        <div class="container">
+            <div id="pq">
+                <h4>Questions to Meetup1</h4>
+                <div class="qcards">
+                    <p>That is a very good question, be nice if you could answer it!</p>
+                    <div>
+                        <form>
+                            <input type="button" onclick="myfunc()" value="Comments">
+                        </form>
+                        <div id="comment-box">
+                            <div id="comments">
+                                <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                                <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                                <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="del">
+                    <div class=votesup>
+                        <img src="./img/up.png">
+                        <p>38</p>
+                    </div>
+                    <div class=votesdown>
+                        <p>11</p>
+                        <img src="./img/down.png">
+                    </div>
+                </div>
+                <div class="qcards">
+                    <p>That is a very good question, be nice if you could answer it!</p>
+                    <div>
+                        <form>
+                            <input type="button" onclick="myfunc2()" value="Comments">
+                        </form>
+                        <div id="comment-box2">
+                            <div id="comments">
+                                <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                                <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                                <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="del">
+                    <div class=votesup>
+                        <img src="./img/up.png">
+                        <p>38</p>
+                    </div>
+                    <div class=votesdown>
+                        <p>11</p>
+                        <img src="./img/down.png">
+                    </div>
+                </div>
+                <div class="qcards">
+                    <p>That is a very good question, be nice if you could answer it!</p>
+                    <div>
+                        <form>
+                            <input type="button" onclick="myfunc3()" value="Comments">
+                        </form>
+                        <div id="comment-box3">
+                            <div id="comments">
+                                <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                                <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                                <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="del">
+                    <div class=votesup>
+                        <img src="./img/up.png">
+                        <p>38</p>
+                    </div>
+                    <div class=votesdown>
+                        <p>11</p>
+                        <img src="./img/down.png">
+                    </div>
+                </div>
+                <div class="qcards">
+                    <p>That is a very good question, be nice if you could answer it!</p>
+                    <div>
+                        <form>
+                            <input type="button" onclick="myfunc4()" value="Comments">
+                        </form>
+                        <div id="comment-box4">
+                            <div id="comments">
+                                <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                                <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                                <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="del">
+                    <div class=votesup>
+                        <img src="./img/up.png">
+                        <p>38</p>
+                    </div>
+                    <div class=votesdown>
+                        <p>11</p>
+                        <img src="./img/down.png">
+                    </div>
+                </div>
+                <div class="qcards">
+                    <p>That is a very good question, be nice if you could answer it!</p>
+                    <div>
+                        <form>
+                            <input type="button" onclick="myfunc5()" value="Comments">
+                        </form>
+                        <div id="comment-box5">
+                            <div id="comments">
+                                <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                                <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                                <p>This questiong ugh?! this is my my opinion that no one asked for</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="del">
+                    <div class=votesup>
+                        <img src="./img/up.png">
+                        <p>38</p>
+                    </div>
+                    <div class=votesdown>
+                        <p>11</p>
+                        <img src="./img/down.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer">
+        <div class="container">
+            <p>Questioner Copyright &copy; 2019</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

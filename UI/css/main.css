@@ -41,9 +41,9 @@ footer{
     text-align:center;
     color:#D9BB74;
     width: 100%;
-    height: 20px;
+    height: 10px;
     padding-top:10px;
-    margin-top:10px;
+    padding-bottom:10px;
     border-top:2px solid#D9BB74;
 }
 
@@ -86,6 +86,145 @@ header nav {
     margin:auto;
     margin-top:50px;
 }
+#create{
+    min-height:400px;
+    max-width: 500px;
+    margin-left:20px;
+    margin-top:10px;
+    float: left;
+}
+#Posted_Meetups{
+    min-height:400px;
+    max-width: 28%;
+    margin-left:1px;
+    margin-top:10px;
+    float: left;
+}
+#Posted_Q{
+    min-height:400px;
+    max-width: 30%;
+    margin-right:10px;
+    margin-top:10px;
+    float: right;
+}
+#pmeet{
+    width: 99%;
+    min-height:300px;
+    margin-top: 20px;
+    display: inline;
+}
+#pq h4{
+    color: #D9BB74;
+    background-color: #054549;
+    padding:5px;
+}
+#pmeet h3{
+    background: #D9BB74;
+    color: #054549;
+    padding:5px;
+    width: 93%;
+}
+#pmeet input[type=button]{
+    min-width: 25%;
+    display: inline;
+    background-color:#D9BB74;
+    color:#054549;
+    font-weight: bold;
+    padding: 8px 8px;
+    margin-right: 15px;
+    margin-top:3px;
+    border: none;
+    cursor: pointer;
+    float: right;
+}
+.acards{
+    width:95%;
+    border:1px solid #054549;
+    margin-right:10px;
+    margin-top: 7px;
+    float: left;
+    box-align: center;
+}
+.qcards{
+    width:70%;
+    border:1px solid #054549;
+    background-color:#D9BB74;
+    color: #054549;
+    margin-right:10px;
+    margin-top: 10px;
+    float: left;
+    box-align: center;
+}
+.qcards input[type=button]{
+    min-width: 25%;
+    display: inline;
+    background-color:#054549;
+    color:#D9BB74;
+    font-weight: bold;
+    padding: 4px 4px;
+    margin-right: 5px;
+    margin-top:3px;
+    margin-bottom: 5px;
+    border: none;
+    cursor: pointer;
+    float: right;
+}
+.qcards #comments{
+    clear: both;
+}
+.del{
+    display: inline-block;
+    width:25%;
+    padding: 0;
+    margin-top: 10px;
+    float: right;
+}
+.votesup{
+    float: left;
+    margin-right: 4px;
+}
+.votesup img{
+    height:40px;
+    margin-bottom:-10px;
+}
+.votesup p{
+    text-align: center;
+    background-color: #D9BB74;
+    color: #054549;
+}
+.votesdown{
+    float: left;
+     
+}
+.votesdown img{
+    height:40px;
+    margin-top:-10px;
+    color: #054549;
+}
+.votesdown p{
+    text-align: center;
+    background-color: #F25652;
+    color: #054549;;
+}
+.amhead{
+    background-color: #054549;
+    color: #D9BB74;
+}
+.amhead h4,p{
+    margin: 0;
+    padding:1px;
+}
+.avenue_time{
+    background-color: #D9BB74;
+    color: #054549;
+}
+.avenue_time h4,p{
+    margin: 0;
+    padding:1px;
+}
+.adescription{
+    color: #054549;
+}
 #form-admin{
     min-height:400px;
     max-width: 500px;
@@ -104,6 +243,11 @@ header nav {
     min-height: 250px;
     padding:15px; 
 }
+#create form{
+    min-height: 250px;
+    padding:10px; 
+    overflow: hidden;
+}
 
 #form input[type=text], input[type=password], input[type=email]{
     min-width:85%;
@@ -118,6 +262,34 @@ header nav {
     margin: 8px 0;
     display: inline;
     border: 1px solid #D9BB74;
+}
+#create input[type=text], input[type=password], input[type=email]{
+    min-width:85%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline;
+    border: 1px solid #054549;
+}
+#create fieldset{
+    border:2px solid #054549;
+}
+#create textarea{
+    min-width:93%;
+    height: 150px;
+    resize:none;
+    text-align: left;
+    border: 1px solid #054549;
+}
+#create input[type=button]{
+    min-width: 25%;
+    display: inline;
+    background-color:#D9BB74;
+    color:#054549;
+    font-weight: bolder;
+    padding: 12px 20px;
+    margin: 0;
+    border: none;
+    cursor: pointer;
 }
 #form button  {
     min-width: 35%;
@@ -135,6 +307,18 @@ header nav {
     min-width: 35%;
     display: inline;
     background-color:#F25652;
+    color:#054549;
+    font-weight: bolder;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+   
+}
+#create button  {
+    min-width: 35%;
+    display: inline;
+    background-color:#D9BB74;
     color:#054549;
     font-weight: bolder;
     padding: 12px 20px;
@@ -224,7 +408,9 @@ header nav {
     float: left;
     width:74%;
     min-height: 350px;
+    padding-bottom: 20px;
 }
+
 #meetup_view a{ 
     text-decoration: none;
 }
@@ -232,8 +418,6 @@ header nav {
     width: 99%;
     min-height:300px;
     margin-top: 20px;
-    
-    
 }
 .cards{
     width:30%;
@@ -241,49 +425,62 @@ header nav {
     margin-right:20px;
     margin-top: 15px;
     float: left;
+}
 
-
-}
-.mhead{
-    background-color: #054549;
-    color: #D9BB74;
-}
-.mhead h4,p{
-    margin: 0;
-    padding:1px;
-}
-.venue_time{
-    background-color: #D9BB74;
-    color: #054549;
-}
-.venue_time h4,p{
-    margin: 0;
-    padding:1px;
-}
-.description{
-    color: #054549;
-}
 #categories{
     width: 25%;
     float: right;
+    padding-bottom: 20px;
    
 }
-#ctgry{
-    background-color: #D9BB74;
-    min-height:350px;
+#addmeet{
+    background-color: #054549;
+    min-height:175px;
     width: 83%;
     
 }
-
+#addmeet img{
+    margin-top: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
+    height:30px;
+    float: left;
+}
+#addmeet h3,#addmeet p{
+    color: #D9BB74;
+    float: left;
+}
+#addmeet p{
+    padding-left:20px;
+    padding-bottom: 20px;
+}
+#addmeet a{
+    text-decoration: none;
+    color:#054549;
+    background-color:#F25652;
+    padding: 5px;
+    margin-left:60px;
+    margin-bottom: -20px;
+}
+#ctgry {
+    background-color: #D9BB74;
+    min-height:250px;
+    width: 83%;
+}
 #ctgry h4{
     background-color: #054549;
     color: #D9BB74;
-
+}
+#ctgry li{
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
+    
 }
 #ctgry a{
     text-decoration: none;
     color: #054549;
-    padding-left: 5px;
+    font-size: 18px;
 }
 #ctgry a:hover{
     text-decoration: none;

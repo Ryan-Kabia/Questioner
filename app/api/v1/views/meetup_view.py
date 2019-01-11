@@ -60,7 +60,7 @@ def create_question():
     meetup = data["meetup"]
     title = data["title"]
     body = data["body"]
-    votes = randint(0,50)
+    votes = 0
 
     new_question = {
         "id": id,

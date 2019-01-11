@@ -12,9 +12,12 @@ install:
 
   - pip install pytest pytest-cov
 
+  - pip install codecov
+
 
 env:
   - FLASK_VERSION=1.0.2
+  - CODECOV_TOKEN="5ab3ec76-122a-46b6-bb41-0583fb9216e1
 
 script:
   - pytest --cov=./app/api/tests/v1/
@@ -24,3 +27,4 @@ script:
 after_success:
   - coveralls
   - codeclimate-test-reporter
+  - codecov

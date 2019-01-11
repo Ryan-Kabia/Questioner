@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/Ryan-Kabia/Questioner.svg?branch=development)](https://travis-ci.org/Ryan-Kabia/Questioner)    [![Coverage Status](https://coveralls.io/repos/github/Ryan-Kabia/Questioner/badge.svg?branch=development)](https://coveralls.io/github/Ryan-Kabia/Questioner?branch=development)   <a href="https://codeclimate.com/github/Ryan-Kabia/Questioner/maintainability"><img src="https://api.codeclimate.com/v1/badges/435a872e73e87002819d/maintainability" /></a>
+[![codecov](https://codecov.io/gh/Ryan-Kabia/Questioner/branch/development/graph/badge.svg)](https://codecov.io/gh/Ryan-Kabia/Questioner)
 
 
 ### Getting Started

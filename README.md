@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.com/Ryan-Kabia/Questioner.svg?branch=development)](https://travis-ci.com/Ryan-Kabia/Questioner)    [![Coverage Status](https://coveralls.io/repos/github/Ryan-Kabia/Questioner/badge.svg?branch=master)](https://coveralls.io/github/Ryan-Kabia/Questioner?branch=master)   <a href="https://codeclimate.com/github/Ryan-Kabia/Questioner/maintainability"><img src="https://api.codeclimate.com/v1/badges/435a872e73e87002819d/maintainability" /></a>
+
+
 ### Getting Started
 
 Questioner is a site that allows admin users to post meetups and crowd-source questions
@@ -19,9 +22,8 @@ which based by their number of upvotes, are prioritized to be answered.
 #### Author
 Ryan Kabia
 
-[![Build Status](https://travis-ci.com/Ryan-Kabia/Questioner.svg?branch=development)](https://travis-ci.com/Ryan-Kabia/Questioner)
 
-[![Coverage Status](https://coveralls.io/repos/github/Ryan-Kabia/Questioner/badge.svg?branch=master)](https://coveralls.io/github/Ryan-Kabia/Questioner?branch=master)
 
-<a href="https://codeclimate.com/github/Ryan-Kabia/Questioner/maintainability"><img src="https://api.codeclimate.com/v1/badges/435a872e73e87002819d/maintainability" /></a>
+
+
 

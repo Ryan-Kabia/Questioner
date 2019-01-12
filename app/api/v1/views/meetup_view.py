@@ -1,9 +1,11 @@
 from flask import Flask, jsonify, request, Blueprint
 from app.api.v1.models.models import Meetup,Question,Rsvp
+from app.api.v1.utils.validate import Validate
 from random import randint
 
 #app=Flask(__name__)
 mod1 = Blueprint('api', __name__)
+vldr = Validate()
 
 @mod1.route('/meetups/upcoming/')
 def all_meetups():
@@ -26,7 +28,14 @@ def create_meetup():
     last_id=Meetup[-1]["id"]
     inc_id= last_id+1
 
-    id = inc_id        
+    id = inc_id 
+    if vldr.check_empty(data["createdOn"], data["location"], data["happeningOn"], data["topic"], data["Tags"]) == False:
+        return jsonify({"Message":"empty field"})
+    if vldr.check_date(data["createdOn"], data["happeningOn"]) == False:
+        return jsonify({"Message": "Bad date format"})
+    if vldr.check_valid_date(data["createdOn"], data["happeningOn"]) == False:
+        return jsonify({"Message": "Date cannot be less than today"})
+
     createdOn = data["createdOn"]
     location = data["location"]
     happeningOn = data["happeningOn"]
@@ -53,6 +62,13 @@ def create_question():
 
     last_id = Question[-1]["id"]
     inc_id = last_id+1
+
+    if vldr.check_empty(data["createdOn"], data["createdBy"], data["meetup"], data["title"], data["body"]) == False:
+        return jsonify({"Message": "empty field"})
+    if vldr.check_date(data["createdOn"]) == False:
+        return jsonify({"Message": "Bad date format"})
+    if vldr.check_valid_date(data["createdOn"]) == False:
+        return jsonify({"Message": "Date cannot be less than today"})
 
     id = inc_id
     createdOn = data["createdOn"]
@@ -84,6 +100,11 @@ def rsvp(meetup_id):
 
     last_id = Rsvp[-1]["id"]
     inc_id = last_id+1
+
+    if vldr.check_empty(data["user"], data["responce"]) == False:
+        return jsonify({"Message": "empty field"})
+    if vldr.check_responce(data["responce"]) == False:
+        return jsonify({"Message": "Limit Answers to:Yes, No or Maybe"})
 
     id = inc_id
     meetup = int(meetup_id)

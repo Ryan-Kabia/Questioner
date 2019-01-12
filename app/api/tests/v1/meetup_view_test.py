@@ -14,6 +14,9 @@ class BaseTest(unittest.TestCase):
         last_id = Question[-1]["id"]
         qinc_id = last_id+1
 
+        last_id = Rsvp[-1]["id"]
+        rinc_id = last_id+1
+
         self.app = ryan_app
         self.client = self.app.test_client()
 
@@ -36,6 +39,11 @@ class BaseTest(unittest.TestCase):
             "votes": 0,
         }
 
+        self.data3 ={
+            "id":rinc_id,
+            "user": "Adam Cole",
+            "responce": "Maybe",
+        }
 
 class TestCreateUser(BaseTest):
     def test_create_meetup(self):
@@ -130,6 +138,22 @@ class TestCreateUser(BaseTest):
             assert response.status_code == 201
             assert data['status'] == 201
             assert data['data'] == [rtrn]
+
+    def test_rsvp(self):
+        for entry in Meetup:
+            topic = entry["topic"]
+            i = entry["id"]
+
+            response = self.client.post('/meetups/{}/rsvp'.format(i), data=json.dumps(self.data3),content_type='application/json',)
+
+            data = json.loads(response.get_data(as_text=True))
+
+            
+            assert response.status_code == 201
+            assert data['status'] == 201
+            assert data['data'] == [{"topic":topic,"meetup":i,"responce":self.data3["responce"]}]
+
+
 
         
 

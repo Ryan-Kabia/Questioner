@@ -1,115 +1,109 @@
-Users = [{
-		"id": 1,
-		"name": "admin",
-		"email": "admin@qstn",
-		"username": "admin",
-		"password": "admin123",
-		"registered": "12/1/2019",
-		"isAdmin":True
-		}]		
+from datetime import datetime
+from flask import json,jsonify
 
-Meetups = [{
-        "id":1,
-        "createdOn":"8/1/2019",
-        "location":"Hilton Park",
-        "happeningOn": "15/2/2019",
-        "topic":"Not very lit fam!",
-        "Tags":["lit,fam"],
-        },{
-        "id":2,
-        "createdOn":"13/1/2019",
-        "location":"baltimore Park",
-        "happeningOn": "18/3/2019",
-        "topic":"Not lit fam!",
-        "Tags":["lit,fam"],
-        },{
-        "id":3,
-        "createdOn":"18/1/2019",
-        "location":"putin Park",
-        "happeningOn": "14/3/2019",
-        "topic":"lit fam!",
-        "Tags":["lit,fam"],
-        }]
+Users = []		
 
-Questions = [{
-    "id": 1,
-    "createdOn": "8/1/2019",
-    "createdBy": "Adam Cole",
-    "meetup": 1,
-    "title": "but is it undisputed?",
-    "body":"Hell nah, only the cfos run the place!!",
-    "votes": 0,
-        }]
+Meetups = []
 
-Comments = [{
-			"id": 1,
-            "question": "but is it undisputed?",
-            "user": "Kyle O'Riely",
-            "responce": "Tapout 24/7"
-			}]
+Questions = []
 
-Rsvps = [{
-        "id":1,
-        "meetup":1,
-        "user":"Adam Cole",
-        "responce":"yes"
-        }]
+Comments = []
 
-class User:
-	def __init__(self, id, name, email, username, password, registerd, isAdmin):
-
-		self.id = id
-		self.name = name
-		self.email = email
-		self.username = username
-		self.password = password
-		self.registerd = registerd
-		self.isAdmin = isAdmin
-	
-	def save_user(self):
-		Users.append(self)
-
-	@staticmethod
-	def del_user(user):
-		Users.remove(user)
+Rsvps = []
 
 
 class Meetup:
-	def __init__(self, id, createdOn, location, happeningOn, topic, tags):
 
-		self.id = id
-		self.createdOn = createdOn
-		self.location = location
-		self.happeningOn = happeningOn
-		self.topic = topic
-		self.tags = tags
+	def __init__(self, location, happeningOn, topic, tags):
+		"""
+		A class that creates a new meetup
+		"""
 
-	def save_meetup(self):
-		Meetups.append(self)
+		self.meetup_new = dict (
+		id = (len(Meetups)+1),
+		createdOn = datetime.utcnow().strftime("%d/%m/%Y"),
+		location = location,
+		happeningOn = happeningOn,
+		topic = topic,
+		Tags = tags,
+		)
+		self.stored = Meetups
+		
+	def post_meetup(self):
+		"""
+		Class that post(saves) the created meetup to the database
+		"""
+		Meetups.append(self.meetup_new)
+		return self.meetup_new
 
-	@staticmethod
-	def del_meetup(meetup):
-		Meetups.remove(meetup)
+	def get_meetup(self):
+		"""
+		Class that displays the stored meetups in database
+		"""
+		return (self.stored)
+
+	def get_specific_meetup(self,meetup_id):
+		"""
+		Class that displays the stored meetups in database
+		"""
+		for item in self.stored:
+			if item["id"] == meetup_id:
+				return item
+
 
 
 class Question:
-	def __init__(self, id, createdOn, createdBy, happeningOn, title, body, votes):
+	def __init__(self,createdBy,meetup,title, body):
+		"""
+		Class to create a new question to be stored  in database
+		"""
 
-		self.id = id
-		self.createdOn = createdOn
-		self.createdBy = createdBy
-		self.happeningOn = happeningOn
-		self.title = title
-		self.body = body
-		self.votes = votes
+		self.question_new = dict (
+		id = (len(Questions)+1),
+		createdOn = datetime.utcnow().strftime("%d/%m/%Y"),
+		createdBy = createdBy,
+		meetup = meetup,
+		title = title,
+		body = body,
+		votes = 0
+		)
+		
 
 
-	def save_question(self):
-		Meetups.append(self)
+	def post_question(self):
+		"""
+		Class to post created question to database
+		"""
+		Questions.append(self.question_new)
+		return self.question_new
 
-	@staticmethod
-	def del_question(qstn):
-		Meetups.remove(qstn)
+
+class Comment:
+	def __init__(self,user,responce,question_id):
+		"""
+		Class to create a new question to be stored  in database
+		"""
+		for entry in Questions:
+			if entry["id"] == question_id:
+				question = entry["title"]
+
+			self.comment_new = dict (
+			id = (len(Comments)+1),
+			question = question,
+			user = user,
+			responce = responce,
+			votes = 0
+			)
+		
+
+
+	def post_comment(self):
+		"""
+		Class to post created question to database
+		"""
+		Comments.append(self.comment_new)
+		return self.comment_new
+
 
 
 class Rsvp:

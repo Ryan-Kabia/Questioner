@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, Blueprint
-from app.api.v1.models.models import Meetups,Questions,Rsvps,Comments
+from app.api.v1.models.models import *
 from app.api.v1.utils.validate import Validate
+from datetime import datetime
 
 #app=Flask(__name__)
 mod2 = Blueprint('api2', __name__)
@@ -25,95 +26,57 @@ def specific_meetups(meetup_id):
 def create_meetup():
     data = request.get_json()
 
-    last_id=Meetups[-1]["id"]
-    inc_id= last_id+1
 
-    id = inc_id 
-    if vldr.check_empty(data["createdOn"], data["location"], data["happeningOn"], data["topic"], data["Tags"]) == False:
+    if vldr.check_empty(data["location"], data["happeningOn"], data["topic"], data["Tags"]) == False:
         return jsonify({"status":400,"error":"One of more fields are empty"}),400
-    if vldr.check_date(data["createdOn"], data["happeningOn"]) == False:
-        return jsonify({"Message": "Bad date format"})
-    if vldr.check_valid_date(data["createdOn"], data["happeningOn"]) == False:
-        return jsonify({"Message": "Date cannot be less than today"})
+    if vldr.check_date(data["happeningOn"]) == False:
+        return jsonify({"status":400, "error":"Bad date format. Use 'dd/mm/yyyy'"}),400
+    if vldr.check_valid_date(data["happeningOn"]) == False:
+        return jsonify({"status":400, "error":"Invalid Date! Cant be prior to current date"}),400
 
-    createdOn = data["createdOn"]
-    location = data["location"]
-    happeningOn = data["happeningOn"]
-    topic = data["topic"]
-    Tags = data["Tags"]
 
-    new_meetup = {
-        "id": id,
-        "createdOn": createdOn,
-        "location": location,
-        "happeningOn":happeningOn,
-        "topic": topic,
-        "Tags": Tags,
-    }
+    new_meetup_card = Meetup(data["location"], data["happeningOn"], data["topic"], data["Tags"])
 
-    Meetups.append(new_meetup)
     
-    return jsonify ({"status":201,"data":[new_meetup]}),201
+    return jsonify ({"status":201,"data":[new_meetup_card.post_meetup()]}),201
 
 
 @mod2.route('/questions', methods=["POST"])
 def create_question():
     data = request.get_json()
 
-    last_id = Questions[-1]["id"]
-    inc_id = last_id+1
-
-    if vldr.check_empty(data["createdOn"], data["createdBy"], data["meetup"], data["title"], data["body"]) == False:
+    if vldr.check_empty(data["createdBy"], data["meetup"], data["title"], data["body"]) == False:
         return jsonify({"status": 400, "error": "One of more fields are empty"}), 400
-    if vldr.check_date(data["createdOn"]) == False:
-        return jsonify({"Message": "Bad date format"})
-    if vldr.check_valid_date(data["createdOn"]) == False:
-        return jsonify({"Message": "Date cannot be less than today"})
 
-    id = inc_id
-    createdOn = data["createdOn"]
-    createdBy = data["createdBy"]
-    meetup = data["meetup"]
-    title = data["title"]
-    body = data["body"]
-    votes = 0
+    new_question = Question(data["createdBy"], data["meetup"], data["title"], data["body"])
 
-    new_question = {
-        "id": id,
-        "createdOn": createdOn,
-        "createdBy": createdBy,
-        "meetup": meetup,
-        "title": title,
-        "body":body,
-        "votes": votes,
-    }
-
-    Questions.append(new_question)
-
-    return jsonify({"status": 201, "data": [new_question]}), 201
+    return jsonify({"status": 201, "data": [new_question.post_question()]}), 201
 
 @mod2.route('/questions/<question_id>/comment',methods=["POST"])
 def create_comment(question_id):
 
     data = request.get_json()
 
-    last_id = Comments[-1]["id"]
+    last_id = len(Comments)+1
     cinc_id = last_id+1
 
+    id = cinc_id
+    qstn = ""
     for entry in Questions:
         if entry["id"] == int(question_id):
             qstn = entry["title"]
+            
 
     if vldr.check_empty(data["user"], data["responce"]) == False:
         return jsonify({"status": 400, "error": "One of more fields are empty"}), 400
-    id = cinc_id
-    question = qstn
+        
+    
     user = data["user"]
     responce = data["responce"]
 
     new_comment = {
         "id": id,
-        "question": question,
+        "question": qstn,
         "user": user,
         "responce": responce
     }
@@ -127,13 +90,13 @@ def rsvp(meetup_id):
 
     data = request.get_json()
 
-    last_id = Rsvps[-1]["id"]
-    inc_id = last_id+1
+    last_id = len(Rsvps)+1
+    inc_id = last_id
 
     if vldr.check_empty(data["user"], data["responce"]) == False:
         return jsonify({"status": 400, "error": "One of more fields are empty"}), 400
     if vldr.check_responce(data["responce"]) == False:
-        return jsonify({"Message": "Limit Answers to:Yes, No or Maybe"})
+        return jsonify({"status":400, "error": "Limit Answers to:Yes, No or Maybe"}), 400
 
     id = inc_id
     meetup = int(meetup_id)

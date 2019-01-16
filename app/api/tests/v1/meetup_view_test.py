@@ -1,154 +1,47 @@
 import unittest
 from app import ryan_app
 from flask import json
-from app.api.v1.models.models import *
+from app.api.v1.models.models import Meetups, Users, Questions, Rsvps, Comments
 import pytest
+from app.api.tests.v1.basetest import BaseTest
+from datetime import datetime
 
-
-class BaseTest(unittest.TestCase):
-    def setUp(self):
-
-        last_id = Meetups[-1]["id"]
-        inc_id = last_id+1
-
-        last_id = Questions[-1]["id"]
-        qinc_id = last_id+1
-
-        last_id = Rsvps[-1]["id"]
-        rinc_id = last_id+1
-
-        last_id = Comments[-1]["id"]
-        cinc_id = last_id+1
-
-        last_id = Users[-1]["id"]
-        uinc_id = last_id+1
-
-        self.app = ryan_app
-        self.client = self.app.test_client()
-
-        self.data1 ={
-            "id":inc_id,
-            "createdOn": "8/1/2019",
-            "location": "hilton park",
-            "happeningOn":"15/2/2019",
-            "topic": "What?",
-            "Tags": "5w",
-        }
-
-        self.data2 = {
-            "id": qinc_id,
-            "createdOn": "8/1/2019",
-            "createdBy": "Adam Cole",
-            "meetup": 1,
-            "title": "This is NXT",
-            "body":"Undisputed BayBay!",
-            "votes": 0,
-        }
-
-        self.data3 ={
-            "id":rinc_id,
-            "user": "Adam Cole",
-            "responce": "Maybe",
-        }
-
-        self.data4 = {
-            "id":cinc_id,
-            "user":"Adam Cole",
-            "responce":"You love it!"
-        }
-
-        self.data5 = {
-            "id": uinc_id,
-            "name": "Adam cole",
-            "email": "adam@nxt",
-            "username": "BayBay",
-            "password": "undisputed4eva",
-            "registered": "13/1/2019",
-            "isAdmin": False
-        }
-
-        self.data6 = {
-            "username": "BayBay",
-            "password": "undisputed4eva"
-        }
-
-        self.data7 = {
-            "id": inc_id,
-            "createdOn": "",
-            "location": "",
-            "happeningOn": "",
-            "topic": "",
-            "Tags": "5w",
-        }
-
-        self.data8 = {
-            "id": qinc_id,
-            "createdOn": "",
-            "createdBy": "",
-            "meetup": 1,
-            "title": "",
-            "body": "",
-            "votes": 0,
-        }
-
-        self.data9 = {
-            "id": cinc_id,
-            "user": "",
-            "responce": ""
-        }
-
-        self.data10 = {
-            "id": rinc_id,
-            "user": "",
-            "responce": "",
-        }
-
-        self.data11 = {
-            "id": uinc_id,
-            "name": "",
-            "email": "adam@nxt",
-            "username": "",
-            "password": "undisputed4eva",
-            "registered": "13/1/2019",
-            "isAdmin": False
-        }
-
-        self.data12 = {
-            "username": "BayBay",
-            "password": ""
-        }
-
-class Test(BaseTest):
+class Test_Succesful(BaseTest):
+    """
+    Class that asserts expected succesfull outcomes. 
+    """
     def test_create_meetup(self):
-        response = self.client.post('/meetups',data = json.dumps(self.data1),content_type='application/json',)
+        response = self.client.post('/meetups',data = json.dumps(self.meetup_input),content_type='application/json',)
 
+        self.meetup_input.update(createdOn=datetime.utcnow().strftime("%d/%m/%Y"))
         data = json.loads(response.get_data(as_text=True))
 
         assert response.status_code == 201
         assert data['status'] == 201
-        assert data['data'] == [self.data1]
+        assert data['data'] == [self.meetup_input]
 
     def test_create_question(self):
-        response = self.client.post('/questions',data = json.dumps(self.data2),content_type='application/json',)
+        response = self.client.post('/questions',data = json.dumps(self.question_input),content_type='application/json',)
 
+        self.question_input.update(createdOn=datetime.utcnow().strftime("%d/%m/%Y"))
         data = json.loads(response.get_data(as_text=True))
 
         assert response.status_code == 201
         assert data['status'] == 201
-        assert data['data'] == [self.data2]
+        assert data['data'] == [self.question_input]
 
     def test_create_comment(self):
         for entry in Questions:
             i = entry["id"]
             qstn = entry["title"]
-            response = self.client.post('questions/{}/comment'.format(i), data=json.dumps(self.data4), content_type='application/json',)
+            response = self.client.post('questions/{}/comment'.format(i), data=json.dumps(self.comment_input), content_type='application/json',)
 
             data = json.loads(response.get_data(as_text=True))
-            self.data4.update(question = qstn)
+            self.comment_input.update(question = qstn)
 
             assert response.status_code == 201
             assert data['status'] == 201
-            assert data['data'] == [self.data4]
+            assert data['data'] == [self.comment_input]
 
     def test_all_meetups(self):
         response = self.client.get('/meetups/upcoming/',content_type='application/json',)
@@ -171,7 +64,7 @@ class Test(BaseTest):
             assert data['status'] == 200
             assert data['data'] == entry
 
-        j = Meetups[-1]["id"]+1
+        j = len(Meetups)+1
 
         response = self.client.get('/meetups/{}'.format(j),content_type='application/json',)
 
@@ -230,36 +123,23 @@ class Test(BaseTest):
             topic = entry["topic"]
             i = entry["id"]
 
-            response = self.client.post('/meetups/{}/rsvp'.format(i), data=json.dumps(self.data3),content_type='application/json',)
+            response = self.client.post('/meetups/{}/rsvp'.format(i), data=json.dumps(self.rsvp_input),content_type='application/json',)
 
             data = json.loads(response.get_data(as_text=True))
 
             
             assert response.status_code == 200
-            #assert data['status'] == 200
-            #assert data['data'] == [{"topic":topic,"meetup":i,"responce":self.data3["responce"]}]
-
-    def test_signup(self):
-        response = self.client.post('/signup', data=json.dumps(self.data5), content_type='application/json',)
-
-        data = json.loads(response.get_data(as_text=True))
-
-        assert response.status_code == 201
-        assert data['status'] == 201
-        assert data['data'] == [self.data5]
-
-    def test_signin(self):
-        response = self.client.post('/signin', data=json.dumps(self.data6), content_type='application/json',)
-
-        data = json.loads(response.get_data(as_text=True))
-
-        assert response.status_code == 200
-        #assert data['status'] == 200
-        #assert data['data'] == ['{} logged in successfully'.format(self.data6["username"])]
-
+            assert data['status'] == 200
+            assert data['data'] == [{"topic":topic,"meetup":i,"responce":self.rsvp_input["responce"]}]
+       
 class Test_empty(BaseTest):
-    def test_create_meetup(self):
-        response = self.client.post('/meetups', data=json.dumps(self.data7), content_type='application/json',)
+    """
+    Class that asserts empty fields get a 400 error 'one or more
+    fields are empty'
+    """
+    def test_create_meetup_empty(self):
+        self.meetup_input.update(location = "")
+        response = self.client.post('/meetups', data=json.dumps(self.meetup_input), content_type='application/json',)
 
         data = json.loads(response.get_data(as_text=True))
 
@@ -267,8 +147,9 @@ class Test_empty(BaseTest):
         assert data['status'] == 400
         assert data['error'] == "One of more fields are empty"
 
-    def test_create_question(self):
-        response = self.client.post('/questions', data=json.dumps(self.data8), content_type='application/json',)
+    def test_create_question_empty(self):
+        self.question_input.update(body="",title = "")
+        response = self.client.post('/questions', data=json.dumps(self.question_input), content_type='application/json',)
 
         data = json.loads(response.get_data(as_text=True))
 
@@ -276,24 +157,26 @@ class Test_empty(BaseTest):
         assert data['status'] == 400
         assert data['error'] == "One of more fields are empty"
 
-    def test_create_comment(self):
+    def test_create_comment_empty(self):
+        self.comment_input.update(responce = "")
         for entry in Questions:
             i = entry["id"]
             qstn = entry["title"]
-            response = self.client.post('questions/{}/comment'.format(i), data=json.dumps(self.data9), content_type='application/json',)
+            response = self.client.post('questions/{}/comment'.format(i), data=json.dumps(self.comment_input), content_type='application/json',)
 
             data = json.loads(response.get_data(as_text=True))
-            self.data4.update(question=qstn)
+            self.comment_input.update(question=qstn)
 
-        assert response.status_code == 400
-        assert data['status'] == 400
-        assert data['error'] == "One of more fields are empty"
+            assert response.status_code == 400
+            assert data['status'] == 400
+            assert data['error'] == "One of more fields are empty"
 
-    def test_rsvp(self):
+    def test_rsvp_empty(self):
+        self.rsvp_input.update(user="", responce="")
         for entry in Meetups:
-            i = entry["id"]
+            id = entry["id"]
 
-            response = self.client.post('/meetups/{}/rsvp'.format(i), data=json.dumps(self.data10), content_type='application/json',)
+            response = self.client.post('/meetups/{}/rsvp'.format(id), data=json.dumps(self.rsvp_input), content_type='application/json',)
 
             data = json.loads(response.get_data(as_text=True))
 
@@ -301,24 +184,75 @@ class Test_empty(BaseTest):
             assert data['status'] == 400
             assert data['error'] == "One of more fields are empty"
 
-    def test_signup(self):
-        response = self.client.post('/signup', data=json.dumps(self.data11), content_type='application/json',)
+class Test_Invalid_Date(BaseTest):
+    """
+    Class that asserts:
+        1)date for future meetup has valid format i.e dd/mm/yyyy
+        2)date for a future meetup can't be prior to current date
+    and gives thier respective error messages
+    """
+
+    def test_create_meetup_format(self):
+        self.meetup_input.update(happeningOn="2-6-2018")
+        response = self.client.post(
+            '/meetups', data=json.dumps(self.meetup_input), content_type='application/json',)
 
         data = json.loads(response.get_data(as_text=True))
 
         assert response.status_code == 400
         assert data['status'] == 400
-        assert data['error'] == "One of more fields are empty"
+        assert data['error'] == "Bad date format. Use 'dd/mm/yyyy'"
 
-    def test_signin(self):
-
-        response = self.client.post('/signin', data=json.dumps(self.data12), content_type='application/json',)
+    def test_create_meetup_invalid(self):
+        self.meetup_input.update(happeningOn="2/6/2018")
+        response = self.client.post('/meetups', data=json.dumps(self.meetup_input), content_type='application/json',)
 
         data = json.loads(response.get_data(as_text=True))
 
         assert response.status_code == 400
         assert data['status'] == 400
-        assert data['error'] == "One of more fields are empty"
+        assert data['error'] == "Invalid Date! Cant be prior to current date"
+
+class Test_Rsvp_Responce(BaseTest):
+    """
+    Class that asserts responces to a meetup invitation are 
+    restrained to 'Yes', 'No' or 'Maybe'
+    """
+
+    def test_rsvp_allowed(self):
+        for responce in ["yes","YES","MayBe","NO","no","maybe"]:
+            self.rsvp_input.update(responce= responce)
+            for entry in Meetups:
+                topic = entry["topic"]
+                id = entry["id"]
+
+                response = self.client.post('/meetups/{}/rsvp'.format(id), data=json.dumps(
+                    self.rsvp_input), content_type='application/json',)
+
+                data = json.loads(response.get_data(as_text=True))
+
+                assert response.status_code == 200
+                assert data['status'] == 200
+                assert data['data'] == [{"topic": topic, "meetup": id, "responce": self.rsvp_input["responce"]}]
+
+    def test_rsvp_not_allowed(self):
+        for responce in ["Kinda", "Meh", "idk", "guess?", "prolly", "turnup!"]:
+            self.rsvp_input.update(responce=responce)
+            for entry in Meetups:
+                id = entry["id"]
+
+                response = self.client.post('/meetups/{}/rsvp'.format(id), data=json.dumps(
+                    self.rsvp_input), content_type='application/json',)
+
+                data = json.loads(response.get_data(as_text=True))
+
+                assert response.status_code == 400
+                assert data['status'] == 400
+                assert data['error'] == "Limit Answers to:Yes, No or Maybe"
+
+
+
+
 
 
 

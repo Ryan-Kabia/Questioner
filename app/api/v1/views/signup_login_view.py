@@ -52,7 +52,7 @@ def create_user():
 
     Users.append(user)
 
-    return jsonify({"status": 201, "data": [user]}), 201
+    return jsonify({"status": 200, "data": [user]}), 200
 
 
 @mod1.route('/signin', methods=["POST"])

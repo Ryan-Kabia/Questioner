@@ -20,7 +20,7 @@ env:
   - CODECOV_TOKEN="5ab3ec76-122a-46b6-bb41-0583fb9216e1
 
 script:
-  - pytest --cov=./app/
+  - pytest --cov=/app/api/
   - coveralls
 
 

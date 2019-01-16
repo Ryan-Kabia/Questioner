@@ -1,6 +1,6 @@
 import unittest
 from app.api.v1.models.models import Meetups,Users,Questions,Rsvps,Comments
-from app import ryan_app
+from app import create_app
 
 
 
@@ -20,7 +20,7 @@ class BaseTest(unittest.TestCase):
         comment_plus_id = last_id
 
 
-        self.app = ryan_app
+        self.app = create_app(config_name="testing")
         self.client = self.app.test_client()
 
         self.meetup_input = {

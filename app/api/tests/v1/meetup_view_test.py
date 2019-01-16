@@ -1,8 +1,7 @@
 import unittest
-from app import ryan_app
+import pytest
 from flask import json
 from app.api.v1.models.models import Meetups, Users, Questions, Rsvps, Comments
-import pytest
 from app.api.tests.v1.basetest import BaseTest
 from datetime import datetime
 

@@ -4,16 +4,16 @@ from app.api.v1.utils.validate import Validate
 from datetime import datetime
 
 #app=Flask(__name__)
-mod2 = Blueprint('api2', __name__)
+bp1 = Blueprint('api2', __name__)
 
 vldr = Validate()
 
-@mod2.route('/meetups/upcoming/')
+@bp1.route('/meetups/upcoming/')
 def all_meetups():
     return jsonify({"status": 200, "data": Meetups}), 200
 
 
-@mod2.route('/meetups/<meetup_id>')
+@bp1.route('/meetups/<meetup_id>')
 def specific_meetups(meetup_id):
     for entry in Meetups:
         if entry["id"] == int(meetup_id):
@@ -22,7 +22,7 @@ def specific_meetups(meetup_id):
     return jsonify ({"status":404,"data":"entry cannot be found"}),404
 
 
-@mod2.route('/meetups',methods = ["POST"])
+@bp1.route('/meetups',methods = ["POST"])
 def create_meetup():
     data = request.get_json()
 
@@ -41,7 +41,7 @@ def create_meetup():
     return jsonify ({"status":201,"data":[new_meetup_card.post_meetup()]}),201
 
 
-@mod2.route('/questions', methods=["POST"])
+@bp1.route('/questions', methods=["POST"])
 def create_question():
     data = request.get_json()
 
@@ -52,7 +52,7 @@ def create_question():
 
     return jsonify({"status": 201, "data": [new_question.post_question()]}), 201
 
-@mod2.route('/questions/<question_id>/comment',methods=["POST"])
+@bp1.route('/questions/<question_id>/comment',methods=["POST"])
 def create_comment(question_id):
 
     data = request.get_json()
@@ -85,7 +85,7 @@ def create_comment(question_id):
 
     return jsonify({"status": 201, "data": [new_comment]}), 201
 
-@mod2.route('/meetups/<meetup_id>/rsvp', methods=["POST"])
+@bp1.route('/meetups/<meetup_id>/rsvp', methods=["POST"])
 def rsvp(meetup_id):
 
     data = request.get_json()
@@ -124,7 +124,7 @@ def rsvp(meetup_id):
     }
     return jsonify({"status": 200, "data": [rtrn_obj]}), 200
 
-@mod2.route('/questions/<question_id>/upvote', methods=["PATCH"])
+@bp1.route('/questions/<question_id>/upvote', methods=["PATCH"])
 def upvote(question_id):
     for entry in Questions:
         if entry["id"] == int(question_id):
@@ -141,7 +141,7 @@ def upvote(question_id):
                 }
     return jsonify({"status": 201, "data": [rtrn_obj]}), 201
 
-@mod2.route('/questions/<question_id>/downvote', methods=["PATCH"])
+@bp1.route('/questions/<question_id>/downvote', methods=["PATCH"])
 def downvote(question_id):
     for entry in Questions:
         if entry["id"] == int(question_id):

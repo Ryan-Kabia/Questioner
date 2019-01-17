@@ -33,38 +33,7 @@ class Validate():
             if (arg < current_date):
                 return False
 
-    def check_valid_email(self, email):
-        vemail = re.compile(r'(\w+[.|\w])*@(\w+[.])*\w+')
-
-        if not vemail.match(email):
-            return False
-
-    def check_registered_email(self, email):
-        for user in Users:
-            if email == user['email']:
-                return False
-
-    def check_registered_username(self, username):
-        for user in Users:
-            if username == user['username']:
-                return False
-
-    def check_registered_password(self, username,password):
-        for user in Users:
-            if username == user['username']:
-                if password == user['password']:
-                    return False
-
-    def check_password(self, password):
-
-        if (len(password) < 8) or (len(password) > 20):
-            return False
-        elif not re.search("[A-Z]", password):
-            return False
-        elif not re.search("[a-z]", password):
-            return False
-        elif not re.search("[0-9]", password):
-            return False
+    
         
 
 

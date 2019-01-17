@@ -19,7 +19,7 @@ mccabe==0.6.1
 more-itertools==5.0.0
 pathlib2==2.3.3
 pep8==1.7.1
-pkg-resources==0.0.0
+#pkg-resources==0.0.0
 pluggy==0.8.1
 py==1.7.0
 pycodestyle==2.4.0

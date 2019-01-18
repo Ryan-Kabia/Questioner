@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Ryan-Kabia/Questioner.svg?branch=develop)](https://travis-ci.org/Ryan-Kabia/Questioner)    [![Coverage Status](https://coveralls.io/repos/github/Ryan-Kabia/Questioner/badge.svg?branch=develop)](https://coveralls.io/github/Ryan-Kabia/Questioner?branch=develop)  [![Maintainability](https://api.codeclimate.com/v1/badges/435a872e73e87002819d/maintainability)](https://codeclimate.com/github/Ryan-Kabia/Questioner/maintainability)
+[![Build Status](https://travis-ci.org/Ryan-Kabia/Questioner.svg?branch=develop)](https://travis-ci.org/Ryan-Kabia/Questioner)   [![Coverage Status](https://coveralls.io/repos/github/Ryan-Kabia/Questioner/badge.svg?branch=develop)](https://coveralls.io/github/Ryan-Kabia/Questioner?branch=develop)  [![Maintainability](https://api.codeclimate.com/v1/badges/435a872e73e87002819d/maintainability)](https://codeclimate.com/github/Ryan-Kabia/Questioner/maintainability)
 [![codecov](https://codecov.io/gh/Ryan-Kabia/Questioner/branch/develop/graph/badge.svg)](https://codecov.io/gh/Ryan-Kabia/Questioner)
 
 ### Getting Started

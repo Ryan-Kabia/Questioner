@@ -187,7 +187,7 @@ class Test_Invalid_Date(BaseTest):
     """
     Class that asserts:
         1)date for future meetup has valid format i.e dd/mm/yyyy
-        2)date for a future meetup can't be prior to current date
+        2)date for a future meetup can't be prior to/same as current date
     and gives thier respective error messages
     """
 
@@ -210,7 +210,7 @@ class Test_Invalid_Date(BaseTest):
 
         assert response.status_code == 400
         assert data['status'] == 400
-        assert data['error'] == "Invalid Date! Cant be prior to current date"
+        assert data['error'] == "Invalid Date! Cant be the same as or prior to the current date"
 
 class Test_Rsvp_Responce(BaseTest):
     """

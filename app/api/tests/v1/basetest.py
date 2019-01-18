@@ -28,13 +28,12 @@ class BaseTest(unittest.TestCase):
             "location": "hilton park",
             "happeningOn": "15/2/2019",
             "topic": "What?",
-            "Tags": "5w",
+            "Tags": "pupper",
         }
 
         self.question_input = {
             "id": question_plus_id,
             "createdBy": "Adam Cole",
-            "meetup": 1,
             "title": "This is NXT",
             "body": "Undisputed BayBay!",
             "votes": 0,

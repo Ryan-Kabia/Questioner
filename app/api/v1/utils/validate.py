@@ -7,9 +7,15 @@ import re
 
 class Validate():
 
-    def check_empty(self,*args):
+    def check_empty_fields(self,*args):
        for arg in args:
-           if arg == "":
+           if not arg.split():
+            return False
+
+    def check_string(self, *args):
+       for arg in args:
+           arg = arg.split()
+           if not arg[0].isalpha():
             return False
 
     def check_responce(self, *args):

@@ -27,7 +27,7 @@ class Meetup:
 		topic = topic,
 		Tags = tags,
 		)
-		self.stored = Meetups
+		self.meetups = Meetups
 		
 	def post_meetup(self):
 		"""
@@ -38,18 +38,19 @@ class Meetup:
 
 	def get_meetup(self):
 		"""
-		Class that displays the stored meetups in database
+		Class that displays all meetups in database
 		"""
-		return (self.stored)
+		return self.meetups
 
 	def get_specific_meetup(self,meetup_id):
 		"""
-		Class that displays the stored meetups in database
+		Class that displays specific meetup in database
 		"""
-		for item in self.stored:
-			if item["id"] == meetup_id:
-				return item
+		for meetup in self.meetups:
+			if meetup.get("id") == meetup_id:
+				return meetup
 
+		return False
 
 
 class Question:
@@ -67,8 +68,6 @@ class Question:
 		body = body,
 		votes = 0
 		)
-		
-
 
 	def post_question(self):
 		"""
@@ -79,23 +78,21 @@ class Question:
 
 
 class Comment:
-	def __init__(self,user,responce,question_id):
+	def __init__(self,user,responce,question):
 		"""
 		Class to create a new question to be stored  in database
 		"""
-		for entry in Questions:
-			if entry["id"] == question_id:
-				question = entry["title"]
-
-			self.comment_new = dict (
-			id = (len(Comments)+1),
-			question = question,
-			user = user,
-			responce = responce,
-			votes = 0
-			)
 		
+		self.comment_new = dict (
+		id = (len(Comments)+1),
+		question = question,
+		user = user,
+		responce = responce,
+		votes = 0
+		)
 
+		# if not self.comment_new.get("question"):
+		# 	
 
 	def post_comment(self):
 		"""
@@ -108,15 +105,14 @@ class Comment:
 
 class Rsvp:
 	def __init__(self, id, meetup, user, responce):
-
+		"""
+		Class to create new rsvp entry
+		"""
+	
 		self.id = id
 		self.meetup = meetup
 		self.user = user
 		self.responce = responce
 
-	def save_rsvp(self):
+	def post_rsvp(self):
 		Meetups.append(self)
-
-	@staticmethod
-	def del_rsvp(rsvp):
-		Meetups.remove(rsvp)
